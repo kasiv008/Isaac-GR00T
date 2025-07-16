@@ -310,11 +310,12 @@ class LeRobotSingleDataset(Dataset):
             if original_key is None:
                 original_key = new_key
             le_video_meta = le_info["features"][original_key]
+            #print(le_video_meta)
             height = le_video_meta["shape"][le_video_meta["names"].index("height")]
             width = le_video_meta["shape"][le_video_meta["names"].index("width")]
             # NOTE(FH): different lerobot dataset versions have different keys for the number of channels and fps
             try:
-                channels = le_video_meta["shape"][le_video_meta["names"].index("channel")]
+                channels = le_video_meta["shape"][le_video_meta["names"].index("channels")]
                 fps = le_video_meta["video_info"]["video.fps"]
             except (ValueError, KeyError):
                 # channels = le_video_meta["shape"][le_video_meta["names"].index("channels")]
